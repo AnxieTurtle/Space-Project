@@ -9,9 +9,10 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] enemyPrefabs;
     public GameObject[] spawnPoint;
 
-    static public float speedGlobal = 2;
+    static public float speedGlobal = 1;
     static public int enemysInWave = 20;
     static public int waveNumber = 1;
+    [SerializeField] private float spawnTime = 3f;
 
     void Start() {
         playerController = player.GetComponent<PlayerController>();
@@ -26,7 +27,7 @@ public class SpawnManager : MonoBehaviour {
         //    SpawnWave(waveID);
         //}
         while(true) {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(spawnTime);
             int waveID = Random.Range(0, 2);
             SpawnWave(waveID);
             //SpawnEnemy(0);
